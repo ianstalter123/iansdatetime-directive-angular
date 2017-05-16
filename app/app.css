@@ -1,0 +1,77 @@
+/* app css stylesheet */
+
+font-family: 'Noto Serif', serif !important;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif';
+}
+p, div {
+    font-family: 'Noto Serif';
+}
+
+td.active {
+	background: #ec971f !important;
+	color:white !important;
+}
+
+.prev {
+	  position: absolute;
+	  top: 23px;
+}
+
+.next {
+	  position: absolute;
+	  top: 23px;
+	  right: 10px;
+}
+
+.form-control:focus {
+	border-color:#eea236 !important;
+}
+
+.side ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+.side li {
+    float: left;
+}
+
+.side li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.side li a:hover {
+    background-color: #111111;
+}
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}

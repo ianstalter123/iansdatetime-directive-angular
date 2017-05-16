@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </div>
+            <div
+            sb-before-render-item="setData(order)"
+            val="settings"
+            date-input></div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-time"></span>
+            </div>
+            <div
+            sb-before-render-item="setData(order)"
+            val="settings"
+            time-input></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <table ng-show="showDateTable" class="table table-bordered table-hover" style="width:100%; border:1px solid black; cursor: pointer">
+            <h4 ng-show="showDateTable" style="text-align:center; border-bottom:1px solid lightgray; padding: 10px">{{settings.date | amDateFormat: 'MMM, YYYY'}}</h4>
+            <tr>
+                <th>SU</th>
+                <th>MO</th>
+                <th>TU</th>
+                <th>WE</th>
+                <th>TH</th>
+                <th>FR</th>
+                <th>SA</th>
+            </tr>
+            <tr
+            	ng-repeat="week in results">
+                <td
+                ng-class="{active: day.active}"
+                ng-click="setDate(day | amDateFormat:'MM-DD-YYYY')"
+                ng-repeat="day in week">{{day | amDateFormat:'D'}}</td>
+            </tr>
+        </table>
+        <a
+        ng-show="showDateTable"
+        class="glyphicon glyphicon-menu-left prev"
+        ng-click="prevMonth()"
+        style="cursor:pointer"></a>
+        <a
+        ng-show="showDateTable"
+        class="glyphicon glyphicon-menu-right next"
+        ng-click="nextMonth()"
+        style="float:right; cursor:pointer"></a>
+    </div>
+    <div class="col-md-4">
+        <table
+        ng-show="showTimeTable"
+        class="table table-bordered table-hover"
+        style="width:100%;
+        border:1px solid black;
+        cursor: pointer">
+            <h4
+            ng-show="showTimeTable"
+            style="text-align:center; border-bottom:1px solid lightgray;padding: 10px">{{settings.date | amDateFormat: 'MMM DD, YYYY'}}</h4>
+            <tr>
+                <td colspan="2">
+                    <button ng-click="AM=true; PM=false"
+                    type="button"
+                    class="btn btn-warning btn-block"
+                    ng-class="{active: AM}">AM</button>
+                </td>
+                <td colspan="2">
+                    <button ng-click="PM=true; AM=false" type="button" class="btn btn-warning btn-block"
+                    ng-class="{active: PM}">PM</button>
+                </td>
+            </tr>
+            <tr ng-show="PM" ng-repeat="timerow in timesPM">
+                <td
+                ng-class="{active: time === settings.time}"
+                ng-click="setTime(time)"
+                ng-repeat="time in timerow">{{time}}
+                </td>
+            </tr>
+            <tr ng-show="AM" ng-repeat="timerow in timesAM">
+                <td
+                ng-class="{active: time === settings.time}"
+                ng-click="setTime(time)"
+                ng-repeat="time in timerow">{{time}}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
